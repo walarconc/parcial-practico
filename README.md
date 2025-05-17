@@ -24,6 +24,7 @@
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Parcial Aerolineas](Wilson.AlacaronCuchigay@scotiabank.com) Taller practico para la gestión de aerolineas y aeropuertos.
 
 ## Project setup
 
