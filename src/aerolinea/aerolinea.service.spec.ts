@@ -76,6 +76,19 @@ describe('AerolineaService', () => {
     expect(aerolineaAlmacenada.nombre).toEqual(nuevaAerolinea.nombre)
   });
 
+    it('create deberia lanzar una exepcion para una arolinea con fecha invalida', async () => {
+    const aerolinea: AerolineaEntity = {
+      id: "",
+      nombre: faker.company.name(),
+      descripcion: faker.lorem.sentence(),
+      fecha_fundacion: new Date('2026-04-01T00:00:00.000Z'),
+      pagina_web: faker.internet.url(),
+      aeropuertos: [],
+    }
+
+     await expect(() => service.create(aerolinea)).rejects.toHaveProperty("message", "La fecha de fundacion debe ser una fecha en el pasado")
+  });
+
   it('update deberia modificar una aerolinea', async () => {
     const aerolinea: AerolineaEntity = aerolineasList[0];
     aerolinea.nombre = "New name";
@@ -88,13 +101,22 @@ describe('AerolineaService', () => {
     expect(aerolineaAlmacenada.nombre).toEqual(aerolinea.nombre)
   });
 
-  it('update deberia lanzar una exepcion para una arolinea invalida', async () => {
+  it('update deberia lanzar una exepcion para una aerolinea invalida', async () => {
     let aerolinea: AerolineaEntity = aerolineasList[0];
     aerolinea = {
       ...aerolinea, nombre: "New aerolinea name"
     }
     await expect(() => service.update("0", aerolinea)).rejects.toHaveProperty("message", "La aerolinea con el id dado no fue encontrada")
   });
+
+  it('update deberia lanzar una exepcion para una aerolinea con fecha invalida', async () => {
+    let aerolinea: AerolineaEntity = aerolineasList[0];
+    aerolinea = {
+      ...aerolinea, fecha_fundacion: new Date('2026-04-01T00:00:00.000Z'),
+    }
+
+    await expect(() => service.update(aerolinea.id, aerolinea)).rejects.toHaveProperty("message", "La fecha de fundacion debe ser una fecha en el pasado")
+    });
 
   it('delete deberia eliminar una aerolinea', async () => {
     const aerolinea: AerolineaEntity = aerolineasList[0];
@@ -104,7 +126,7 @@ describe('AerolineaService', () => {
     expect(aerolineaEliminada).toBeNull();
   });
 
-  it('delete deberia lanzar una exepcion para una arolinea invalida', async () => {
+  it('delete deberia lanzar una exepcion para una aerolinea invalida', async () => {
     const aerolinea: AerolineaEntity = aerolineasList[0];
     await service.delete(aerolinea.id);
     await expect(() => service.delete("0")).rejects.toHaveProperty("message", "La aerolinea con el id dado no fue encontrada")

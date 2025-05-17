@@ -76,6 +76,19 @@ describe('AeropuertoService', () => {
     expect(aeropuertoAlmacenado.nombre).toEqual(nuevoAeropuerto.nombre)
   });
 
+  it('create deberia lanzar una exepcion para un aeropuerto con codigo de más de 3 caracteres', async () => {
+      const aeropuerto: AeropuertoEntity = {
+        id: "",
+        nombre: faker.company.name(),
+        codigo: '1234',
+        pais: faker.location.country(),
+        ciudad: faker.internet.url(),
+        aerolineas: [],
+      }
+  
+       await expect(() => service.create(aeropuerto)).rejects.toHaveProperty("message", "El codigo del aeropuerto debe tener unicamente 3 caracteres")
+    });
+
   it('update deberia modificar un aeropuerto', async () => {
     const aeropuerto: AeropuertoEntity = aeropuertosList[0];
     aeropuerto.nombre = "New name";
@@ -94,6 +107,15 @@ describe('AeropuertoService', () => {
       ...aeropuerto, nombre: "New aeropuerto name"
     }
     await expect(() => service.update("0", aeropuerto)).rejects.toHaveProperty("message", "El aeropuerto con el id dado no fue encontrado")
+  });
+
+  it('update deberia lanzar una exepcion para un aeropuerto con codigo invalido', async () => {
+      let aeropuerto: AeropuertoEntity = aeropuertosList[0];
+      aeropuerto = {
+        ...aeropuerto, codigo: '1234',
+      }
+  
+      await expect(() => service.update(aeropuerto.id, aeropuerto)).rejects.toHaveProperty("message", "El codigo del aeropuerto debe tener unicamente 3 caracteres")
   });
 
   it('delete deberia eliminar un aeropuerto', async () => {
