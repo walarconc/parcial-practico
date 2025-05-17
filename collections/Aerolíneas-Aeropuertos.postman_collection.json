@@ -1,0 +1,834 @@
+{
+	"info": {
+		"_postman_id": "705fc5c8-0404-4adc-9bf0-493cc83d9b35",
+		"name": "Aerolíneas-Aeropuertos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "11604273"
+	},
+	"item": [
+		{
+			"name": "Crear una aerolínea válida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"aerolinea_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Avianca\",\r\n    \"descripcion\":\"Descripcion de la aerolinea\",\r\n    \"fecha_fundacion\":\"2025-04-01T00:00:00.000Z\",\r\n    \"pagina_web\":\"www.avianca.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/airlines"
+			},
+			"response": [
+				{
+					"name": "Crear una aerolínea válida",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Avianca\",\r\n    \"descripcion\":\"Descripcion de la aerolinea\",\r\n    \"fecha_fundacion\":\"2023-04-01T00:00:00.000Z\",\r\n    \"pagina_web\":\"www.avianca.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/airlines"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Avianca\",\n    \"descripcion\": \"Descripcion de la aerolinea\",\n    \"fecha_fundacion\":\"2023-04-01T00:00:00.000Z\",\n    \"pagina_web\": \"www.avianca.com\",\n    \"id\": \"a4841eff-992f-4300-89ad-0580faa7e545\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear un aeropuerto válido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"aeropuerto_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"El dorado\",\r\n    \"codigo\":\"123\",\r\n    \"pais\":\"Colombia\",\r\n    \"ciudad\":\"Bogota\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/airports"
+			},
+			"response": [
+				{
+					"name": "Crear un aeropuerto válido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"El dorado\",\r\n    \"codigo\":\"123\",\r\n    \"pais\":\"Colombia\",\r\n    \"ciudad\":\"Bogota\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/airlines"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\":\"El dorado\",\n    \"codigo\":\"123\",\n    \"pais\":\"Colombia\",\n    \"ciudad\":\"Bogota\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear un aeropuerto válido1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"aeropuerto_id_1\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"El dorado\",\r\n    \"codigo\":\"123\",\r\n    \"pais\":\"Colombia\",\r\n    \"ciudad\":\"Bogota\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/airports"
+			},
+			"response": [
+				{
+					"name": "Crear un aeropuerto válido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"El dorado\",\r\n    \"codigo\":\"123\",\r\n    \"pais\":\"Colombia\",\r\n    \"ciudad\":\"Bogota\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/airlines"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\":\"El dorado\",\n    \"codigo\":\"123\",\n    \"pais\":\"Colombia\",\n    \"ciudad\":\"Bogota\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear un aeropuerto válido2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"aeropuerto_id_2\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"El dorado\",\r\n    \"codigo\":\"123\",\r\n    \"pais\":\"Colombia\",\r\n    \"ciudad\":\"Bogota\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/airports"
+			},
+			"response": [
+				{
+					"name": "Crear un aeropuerto válido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"El dorado\",\r\n    \"codigo\":\"123\",\r\n    \"pais\":\"Colombia\",\r\n    \"ciudad\":\"Bogota\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/airlines"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\":\"El dorado\",\n    \"codigo\":\"123\",\n    \"pais\":\"Colombia\",\n    \"ciudad\":\"Bogota\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Asociar un aeropuerto a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "{{baseURL}}/airlines/{{aerolinea_id}}/airports/{{aeropuerto_id_1}}"
+			},
+			"response": [
+				{
+					"name": "Asociar un aeropuerto a una aerolínea",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": "{{baseURL}}/airlines/{{aerolinea_id}}/airports/{{aeropuerto_id_1}}"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"d48e0c39-e498-4244-8967-6cb96f7ed50f\",\n    \"nombre\": \"Cultura1\",\n    \"descripcion\": \"Descripcion de la culturta gastronomica\",\n    \"products\": [\n        {\n            \"id\": \"b4584528-7a09-4634-80d8-2bc5e28d0cce\",\n            \"nombre\": \"Producto1\",\n            \"descripcion\": \"Descriopcion del producto\",\n            \"historia\": \"Esta es una historia del producto\",\n            \"category\":{\n                \"id\": \"b4584528-7a09-4634-80d8-2bc5e28d0cce\",\n                \"nombre\": \"Categoria del producto\"\n            }\n        }\n    ],\n    \"restaurantes\": [],\n    \"paises\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Asociar un aeropuerto que no existe a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El aeropuerto con el id dado no fue encontrado\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/airlines/{{aerolinea_id}}/airports/00000000-0000-0000-0000-000000000000"
+			},
+			"response": [
+				{
+					"name": "Asociar un aeropuerto que no existe a una aerolínea",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": "{{baseURL}}/culturas-gastronomicas/{{cultura_id}}/productos/00000000-0000-0000-0000-000000000000"
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"El producto con el id dado no fue encontrado\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener todos los aeropuertos que cubre una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/airlines/{{aerolinea_id}}/airports"
+			},
+			"response": [
+				{
+					"name": "Obtener todos los aeropuertos que cubre una aerolínea",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/culturas-gastronomicas/{{cultura_id}}/productos"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\r\n    {\r\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\r\n    \"nombre\": \"wasabi\",\r\n    \"descripcion\": \"la especia o condimento picante usado a menudo en sushi y otros platos con pescado\",\r\n    \"historia\": \"Historia acerca del wasabi\",\r\n    \"categoria\": {\r\n        \"id\": \"2e852eec-dd16-479d-9461-e0c1bcb7e527\",\r\n        \"nombre\": \"condimentos\"\r\n        }\r\n    }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener un aeropuerto asociado a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/airlines/{{aerolinea_id}}/airports/{{aeropuerto_id_1}}"
+			},
+			"response": [
+				{
+					"name": "Obtener un aeropuerto asociado a una aerolínea",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/culturas-gastronomicas/{{cultura_id}}/productos/{{productos_id_1}}"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\r\n    \"nombre\": \"wasabi\",\r\n    \"descripcion\": \"la especia o condimento picante usado a menudo en sushi y otros platos con pescado\",\r\n    \"historia\": \"Historia acerca del wasabi\",\r\n    \"categoria\": {\r\n        \"id\": \"2e852eec-dd16-479d-9461-e0c1bcb7e527\",\r\n        \"nombre\": \"condimentos\"\r\n    }\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un aeropuerto que no esté asociado a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El aeropuerto con el id dado no esta asociado a la aerolinea\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/airlines/{{aerolinea_id}}/airports/{{aeropuerto_id_2}}"
+			},
+			"response": [
+				{
+					"name": "Obtener un aeropuerto que no esté asociado a una aerolínea",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/culturas-gastronomicas/{{cultura_id}}/productos/{{productos_id_2}}"
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"El producto con el id dado no esta asociado a la cultura gastronomica\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un aeropuerto que no esté asociado a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El aeropuerto con el id dado no fue encontrado\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/airlines/{{aerolinea_id}}/airports/00000000-0000-0000-0000-000000000000"
+			},
+			"response": [
+				{
+					"name": "Obtener un aeropuerto que no esté asociado a una aerolínea",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/culturas-gastronomicas/{{cultura_id}}/productos/00000000-0000-0000-0000-000000000000"
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"El producto con el id dado no fue encontrado\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar los aeropuertos que están asociados a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n       \"id\": \"{{aeropuerto_id_2}}\"\r\n   }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/airlines/{{aerolinea_id}}/airports"
+			},
+			"response": [
+				{
+					"name": "Actualizar los aeropuertos que están asociados a una aerolínea",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n   {\r\n       \"id\": \"{{product_id_2}}\"\r\n   }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/culturas-gastronomicas/{{cultura_id}}/productos"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"d48e0c39-e498-4244-8967-6cb96f7ed50f\",\r\n    \"nombre\": \"Cultura1\",\r\n    \"descripcion\": \"Descripcion de la culturta gastronomica\",\r\n    \"products\": [\r\n        {\r\n            \"id\": \"b4584528-7a09-4634-80d8-2bc5e28d0cce\",\r\n            \"nombre\": \"Producto1\",\r\n            \"descripcion\": \"Descriopcion del producto\",\r\n            \"historia\": \"Esta es una historia del producto\",\r\n            \"category\":{\r\n                \"id\": \"b4584528-7a09-4634-80d8-2bc5e28d0cce\",\r\n                \"nombre\": \"Categoria del producto\"\r\n            }\r\n        }\r\n    ],\r\n    \"restaurantes\": [],\r\n    \"paises\": []\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar los aeropuertos asociados a una aerolínea, con un aeropuerto inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El aeropuerto con el id dado no fue encontrado\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n   {\r\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n   }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/airlines/{{aerolinea_id}}/airports"
+			},
+			"response": [
+				{
+					"name": "Actualizar los aeropuertos asociados a una aerolínea, con un aeropuerto inexistente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n   {\r\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n   }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/culturas-gastronomicas/{{cultura_id}}/productos"
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"El producto con el id dado no fue encontrado\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar un aeropuerto previamente asociado a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseURL}}/airlines/{{aerolinea_id}}/airports/{{aeropuerto_id_2}}"
+			},
+			"response": [
+				{
+					"name": "Eliminar un aeropuerto previamente asociado a una aerolínea",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{baseURL}}/culturas-gastronomicas/{{cultura_id}}/productos{{producto_id_2}}"
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Eliminar un aeropuerto que no estaba previamente asociado a una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El aeropuerto con el id dado no esta asociado con la aerolinea\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseURL}}/airlines/{{aerolinea_id}}/airports/{{aeropuerto_id_1}}"
+			},
+			"response": [
+				{
+					"name": "Eliminar un aeropuerto que no estaba previamente asociado a una aerolínea",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{baseURL}}/culturas-gastronomicas/{{cultura_id}}/productos/{{producto_id_1}}"
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"El producto con el id dado no esta asociado a la cultura gastronomica\"\r\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{auth_token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		}
+	]
+}

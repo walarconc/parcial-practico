@@ -1,0 +1,546 @@
+{
+	"info": {
+		"_postman_id": "8b39b5af-a6cd-42c7-8d7a-ffcd52faaaa4",
+		"name": "Aerolineas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "11604273"
+	},
+	"item": [
+		{
+			"name": "Crear una aerolínea válida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"aerolinea_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Avianca\",\r\n    \"descripcion\":\"Descripcion de la aerolinea\",\r\n    \"fecha_fundacion\":\"2025-04-01T00:00:00.000Z\",\r\n    \"pagina_web\":\"www.avianca.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/airlines"
+			},
+			"response": [
+				{
+					"name": "Crear una aerolínea válida",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Avianca\",\r\n    \"descripcion\":\"Descripcion de la aerolinea\",\r\n    \"fecha_fundacion\":\"2023-04-01T00:00:00.000Z\",\r\n    \"pagina_web\":\"www.avianca.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/airlines"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Avianca\",\n    \"descripcion\": \"Descripcion de la aerolinea\",\n    \"fecha_fundacion\":\"2023-04-01T00:00:00.000Z\",\n    \"pagina_web\": \"www.avianca.com\",\n    \"id\": \"a4841eff-992f-4300-89ad-0580faa7e545\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear una aerolínea invalida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"La fecha de fundacion debe ser una fecha en el pasado\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Avianca\",\r\n    \"descripcion\":\"Descripcion de la aerolinea\",\r\n    \"fecha_fundacion\":\"2026-04-01T00:00:00.000Z\",\r\n    \"pagina_web\":\"www.avianca.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/airlines"
+			},
+			"response": [
+				{
+					"name": "Crear una aerolínea invalida",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Avianca\",\r\n    \"descripcion\":\"Descripcion de la aerolinea\",\r\n    \"fecha_fundacion\":\"2026-04-01T00:00:00.000Z\",\r\n    \"pagina_web\":\"www.avianca.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/airlines"
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"La fecha de fundacion debe ser una fecha en el pasado\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener todas las aerolíneas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Numero de aerolineas > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/airlines"
+			},
+			"response": [
+				{
+					"name": "Obtener todas las aerolíneas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/airlines"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"a4841eff-992f-4300-89ad-0580faa7e545\",\n        \"nombre\": \"Avianca\",\n        \"descripcion\": \"Descripcion de la aerolinea\",\n        \"fecha_fundacion\": \"2023-10-01T00:00:00.000Z\",\n        \"pagina_web\": \"www.avianca.com\"\n    },\n    {\n        \"id\": \"3d591da4-6f75-4541-b860-4c1db45666aa\",\n        \"nombre\": \"Avianca\",\n        \"descripcion\": \"Descripcion de la aerolinea\",\n        \"fecha_fundacion\": \"2026-10-01T00:00:00.000Z\",\n        \"pagina_web\": \"www.avianca.com\"\n    },\n    {\n        \"id\": \"9efc8e31-b556-4138-82c7-34778989140d\",\n        \"nombre\": \"Avianca\",\n        \"descripcion\": \"Descripcion de la aerolinea\",\n        \"fecha_fundacion\": \"2026-10-01T00:00:00.000Z\",\n        \"pagina_web\": \"www.avianca.com\"\n    },\n    {\n        \"id\": \"ff0462e3-30d2-4c5e-a785-abb58d27678f\",\n        \"nombre\": \"Avianca\",\n        \"descripcion\": \"Descripcion de la aerolinea\",\n        \"fecha_fundacion\": \"2026-10-01T00:00:00.000Z\",\n        \"pagina_web\": \"www.avianca.com\"\n    },\n    {\n        \"id\": \"fa44255c-c454-4076-8545-8ac200f02301\",\n        \"nombre\": \"Avianca\",\n        \"descripcion\": \"Descripcion de la aerolinea\",\n        \"fecha_fundacion\": \"2025-04-01T00:00:00.000Z\",\n        \"pagina_web\": \"www.avianca.com\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener una aerolínea por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/airlines/{{aerolinea_id}}"
+			},
+			"response": [
+				{
+					"name": "Obtener una aerolínea por ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/airlines/{{aerolinea_id}}"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"c61ef252-59c4-432d-bdb6-4dc57a5873c2\",\n    \"nombre\": \"Avianca\",\n    \"descripcion\": \"Descripcion de la aerolinea\",\n    \"fecha_fundacion\": \"2025-04-01T00:00:00.000Z\",\n    \"pagina_web\": \"www.avianca.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una aerolínea por un ID que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"La aerolinea con el id dado no fue encontrada\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseURL}}/airlines/00000000-0000-0000-0000-000000000000"
+			},
+			"response": [
+				{
+					"name": "Obtener una aerolínea por un ID que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}/airlines/00000000-0000-0000-0000-000000000000"
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La aerolinea con el id dado no fue encontrada\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar una aerolinea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Avianca-Actualizada\",\r\n    \"descripcion\":\"Descripcion de la aerolinea\",\r\n    \"fecha_fundacion\":\"2025-04-01T00:00:00.000Z\",\r\n    \"pagina_web\":\"www.avianca.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/airlines/{{aerolinea_id}}"
+			},
+			"response": [
+				{
+					"name": "Actualizar una aerolinea",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Avianca-Actualizada\",\r\n    \"descripcion\":\"Descripcion de la aerolinea\",\r\n    \"fecha_fundacion\":\"2025-04-01T00:00:00.000Z\",\r\n    \"pagina_web\":\"www.avianca.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/airlines/{{aerolinea_id}}"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\":\"Avianca-Actualizada\",\n    \"descripcion\":\"Descripcion de la aerolinea\",\n    \"fecha_fundacion\":\"2025-04-01T00:00:00.000Z\",\n    \"pagina_web\":\"www.avianca.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar una aerolínea con un ID que no existe.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"La aerolinea con el id dado no fue encontrada\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Avianca-Actualizada\",\r\n    \"descripcion\":\"Descripcion de la aerolinea\",\r\n    \"fecha_fundacion\":\"2025-04-01T00:00:00.000Z\",\r\n    \"pagina_web\":\"www.avianca.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/airlines/00000000-0000-0000-0000-000000000000"
+			},
+			"response": [
+				{
+					"name": "Actualizar una aerolínea con un ID que no existe.",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Avianca-Actualizada\",\r\n    \"descripcion\":\"Descripcion de la aerolinea\",\r\n    \"fecha_fundacion\":\"2025-04-01T00:00:00.000Z\",\r\n    \"pagina_web\":\"www.avianca.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}/airlines/00000000-0000-0000-0000-000000000000"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"nombre\":\"Avianca-Actualizada\",\n    \"descripcion\":\"Descripcion de la aerolinea\",\n    \"fecha_fundacion\":\"2025-04-01T00:00:00.000Z\",\n    \"pagina_web\":\"www.avianca.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar una aerolínea por su ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseURL}}/airlines/{{aerolinea_id}}"
+			},
+			"response": [
+				{
+					"name": "Eliminar una aerolínea por su ID",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{baseURL}}/airlines/{{aerolinea_id}}"
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Eliminar una aerolínea con un ID que no existe.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"La aerolinea con el id dado no fue encontrada\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseURL}}/airlines/00000000-0000-0000-0000-000000000000"
+			},
+			"response": [
+				{
+					"name": "Eliminar una aerolínea con un ID que no existe.",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{baseURL}}/airlines/00000000-0000-0000-0000-000000000000"
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La aerolinea con el ID dado no fue encontrado\"\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{auth_token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		}
+	]
+}
